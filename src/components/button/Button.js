@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './Button.module.css'
 const Button = ({ onClick, variant, label, size }) => {
     return (
-        <button className={`${styles[variant]} ${styles[size]}`} onClick={onClick}>{label}</button>
+        <button className={`${styles[variant]} ${styles[size]} ${styles.root}`} onClick={onClick}>{label}</button>
     )
 }
 

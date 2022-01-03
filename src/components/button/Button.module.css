@@ -1,3 +1,9 @@
+.root{
+    border: none;
+    box-shadow: none;
+    margin: 5px;
+    border-radius: 5px;
+}
 .small{
     font-size: 12px;
     padding: 10px 16px;
@@ -9,4 +15,9 @@
 .large {
     font-size: 16px;
     padding: 12px 24px;
+}
+
+.primary{
+    color: white;
+    background-color: #3B3B40;
 }

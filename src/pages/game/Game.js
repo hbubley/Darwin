@@ -12,7 +12,8 @@ const Game = () => {
     const [gameArray, setGameArray] = useState([]);
     const characterOptionsArray = GAME_OBJECTS_ARRAY.filter(obj => obj.type === "animal")
     const handleCharacterSelect = (selectedCharacter) => {
-        setCharacter(selectedCharacter)
+        setCharacter(selectedCharacter);
+        setGameArray([selectedCharacter, selectedCharacter, selectedCharacter, selectedCharacter])
     }
     const shuffleGameArray = () => {
         const newGameArray = []
@@ -22,7 +23,14 @@ const Game = () => {
             randomIndices.push(newInt)
         }
         randomIndices.map(i => newGameArray.push(GAME_OBJECTS_ARRAY[i]))
+        determineOutcome(newGameArray)
         setGameArray(newGameArray);
+    }
+
+    const determineOutcome = (gameArray) => {
+        const predators = gameArray.filter((gameObject) => gameObject?.prey?.includes(character?.animal));
+        const prey = gameArray.filter((gameObject) => gameObject?.predators?.includes(character?.animal));
+        const sleep = gameArray.filter((gameObject) => gameObject?.resource === "cave");
     }
 
 
@@ -33,7 +41,7 @@ const Game = () => {
             <Slots array={character ? gameArray : characterOptionsArray} onClick={character ? null : handleCharacterSelect} />
             <Button label={"shuffle"} onClick={shuffleGameArray} size="large" />
             <div className={styles.linkHomeButton}>
-                <Button label={"Return home"} size="large" onClick={() => navigate({ to: "/" })} />
+                <Button label={"Return home"} size="large" onClick={() => navigate({ to: "/" })} variant={"primary"} />
             </div>
         </div>
     )
