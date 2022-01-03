@@ -1,56 +1,25 @@
 import React, { useState } from 'react'
-import Slot from './components/slot/Slot';
+import Slots from './components/slots/Slots';
+import { GAME_OBJECTS_ARRAY } from './utils/constants';
+import { getRandomInt } from './utils/functions';
 
 const App = () => {
-    const outcomes = [{
-        type: "animal",
-        animal: "rabbit",
-        image: "",
-    }, {
-        type: "animal",
-        animal: "falcon",
-        image: "",
-    }, {
-        type: "animal",
-        animal: "snake",
-        image: "",
-    }, {
-        type: "resource",
-        resource: "cave",
-        image: "",
-    },
-    {
-        type: "resource",
-        resource: "carrots",
-        image: "",
-
-    }];
     const [gameArray, setGameArray] = useState([])
-
-    function getRandomInt(max) {
-        return Math.floor(Math.random() * max);
-    }
 
     const shuffleGameArray = () => {
         const newGameArray = []
         const randomIndices = []
         for (let i = 0; i < 4; i++) {
-            let newInt = getRandomInt(4);
+            let newInt = getRandomInt(5);
             randomIndices.push(newInt)
         }
-        //produce 4 random numbers, they do not need to be different, and push to the random indices array 
-        randomIndices.map(i => newGameArray.push(outcomes[i]))
-        console.log(newGameArray)
+        randomIndices.map(i => newGameArray.push(GAME_OBJECTS_ARRAY[i]))
         setGameArray(newGameArray);
     }
 
     return (
         <div>
-            {
-                gameArray.map((slot) =>
-                    <Slot value={slot} />
-                )
-            }
+            <Slots array={gameArray} />
             <button onClick={shuffleGameArray}>Shuffle</button>
         </div>
     )
