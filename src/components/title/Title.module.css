@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 .title{
-    
+    font-family: 'Patrick Hand', cursive;
+    font-size: 60px;
+    margin: 10px;
 }
