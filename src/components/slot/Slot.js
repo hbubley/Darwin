@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './Slot.module.css';
 
-const Slot = ({ value }) => {
+const Slot = ({ value, onClick }) => {
     if(!value){
         return <h1>Skeleton loader</h1>
     }
     return (
-        <div className={styles.root}>
+        <div onClick={() => onClick(value)} className={styles.root}>
             <h1>{value[value.type]}</h1>
         </div>
     )
