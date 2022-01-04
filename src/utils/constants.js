@@ -31,8 +31,7 @@ export const GAME_OBJECTS_ARRAY = [{
     hunger: 100,
     predators: ["falcon"],
     prey: ["rabbit"],
-    difficulty: "medium"
-
+    difficulty: "medium",
 }, {
     type: "resource",
     resource: "cave",
