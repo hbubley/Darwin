@@ -37,13 +37,18 @@ const Game = () => {
         const predators = gameArray.filter((gameObject) => gameObject?.prey?.includes(character?.animal));
         const prey = gameArray.filter((gameObject) => gameObject?.predators?.includes(character?.animal));
         const sleep = gameArray.filter((gameObject) => gameObject?.resource === "cave");
+        const mates = gameArray.filter((gameObject) => gameObject?.animal === character?.animal);
         const updatedCharacter = { ...character }
         updatedCharacter.sleep = updatedCharacter.sleep - 5
         updatedCharacter.hunger = updatedCharacter.hunger - 5
-        if (predators.length > prey.length) {
+        if (predators.length > 1) {
             updatedCharacter.colony_size = updatedCharacter.colony_size - 1;
         } else if (selectedAction === "sleep") {
             updatedCharacter.sleep = updatedCharacter.sleep + (sleep.length * 5)
+        } else if (selectedAction === "hunt") {
+            updatedCharacter.hunger = updatedCharacter.hunger + (prey.length * 5)
+        } else if (selectedAction === "breed") {
+            updatedCharacter.colony_size = updatedCharacter.colony_size + (mates.length * updatedCharacter?.offspring)
         }
         setCharacter(updatedCharacter)
     }
@@ -53,7 +58,7 @@ const Game = () => {
     return (
         <div className={styles.root}>
             <Title label={character ? "Shuffle" : "Please begin by selecting a character"} />
-            <Slots array={character ? gameArray : characterOptionsArray} onClick={character ? null : handleTempCharacterSelect} />
+            <Slots array={character ? gameArray : characterOptionsArray} onClick={character ? null : handleTempCharacterSelect} highlightedCard={character ? null : tempCharacter} />
             <div>
                 <CharacterStats
                     hunger={character ? character.hunger : tempCharacter?.hunger}

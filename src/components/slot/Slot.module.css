@@ -2,8 +2,20 @@
     border: 2px solid black;
     width: 150px;
     height: 150px;
+    border-radius: 5px;
 }
 
 .clickable{
     cursor: pointer;
+}
+
+.image{
+    width: 80px;
+}
+.text{
+    font-size: 16px;
+}
+
+.highlight{
+    background-color: rgba(135, 179, 122, 0.625);
 }

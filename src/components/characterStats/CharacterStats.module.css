@@ -1,0 +1,9 @@
+.root{
+    margin: 60px auto;
+    text-align: left;
+    border: 2px white solid;
+    border-radius: 5px;
+    max-width: 80%;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}

@@ -1,11 +1,14 @@
 import React from 'react'
+import ProgressBar from '../progressBar/ProgressBar'
 import styles from './CharacterStats.module.css'
 const CharacterStats = ({ sleep, hunger, colonySize }) => {
     return (
-        <div>
-            <p><span>Energy:</span>{sleep}</p>
-            <p><span>Hunger:</span> {hunger}</p>
-            <p><span>colony size:</span> {colonySize}</p>
+        <div className={styles.root}>
+            <p>Energy:</p> 
+            <ProgressBar percentage={(sleep / 100) * 100} />
+            <p>Hunger:</p>
+            <ProgressBar percentage={(hunger / 100) * 100} />
+            <p><span>Colony Size:</span> {colonySize}</p>
         </div>
     )
 }

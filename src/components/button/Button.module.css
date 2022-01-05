@@ -20,8 +20,12 @@
 .primary{
     color: white;
     background-color: #3B3B40;
+    font-family: 'Raleway', cursive;
+    font-weight: 400;
 }
 .secondary{
     color: white;
     background-color: #4F6D7A;
+    font-family: 'Raleway', cursive;
+    font-weight: 300;
 }
